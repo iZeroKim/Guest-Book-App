@@ -29,4 +29,12 @@ class AuthService{
       return e.toString();
     }
   }
+
+  Future signOut() async{
+    try{
+      return await _firebaseAuth.signOut();
+    } catch (e){
+      return e.toString();
+    }
+  }
 }
