@@ -26,6 +26,9 @@ class _LoginPageState extends State<LoginPage> {
               height: 120.0,
               fit: BoxFit.cover,
             ),
+            const SizedBox(
+              height: 50,
+            ),
             //Welcome text
             Text("Hello Again!",
                 style: GoogleFonts.bebasNeue(
