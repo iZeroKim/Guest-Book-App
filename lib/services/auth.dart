@@ -15,4 +15,18 @@ class AuthService{
       return e.code;
     }
   }
+
+  Future registerWithEmailAndPassword(app.User _user) async {
+    try{
+      UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+          email: _user.email.toString(), password: _user.password.toString()
+      );
+      return userCredential.user;
+
+    } on FirebaseAuthException catch(e){
+      return e.code;
+    } catch(e){
+      return e.toString();
+    }
+  }
 }
