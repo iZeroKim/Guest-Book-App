@@ -42,4 +42,8 @@ class AuthService{
   app.User? _firebaseUser(User? user){
     return user != null ? app.User(email : user.email, password : ""): null;
   }
+
+  Stream<app.User?> get user{
+    return _firebaseAuth.authStateChanges().map(_firebaseUser);
+  }
 }
