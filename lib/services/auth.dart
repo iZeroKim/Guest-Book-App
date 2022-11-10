@@ -38,4 +38,8 @@ class AuthService{
       return e.toString();
     }
   }
+
+  app.User? _firebaseUser(User? user){
+    return user != null ? app.User(email : user.email, password : ""): null;
+  }
 }
