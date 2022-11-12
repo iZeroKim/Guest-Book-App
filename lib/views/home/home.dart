@@ -52,6 +52,7 @@ class _State extends State<Home> {
         onPressed: () {
 
           setState(() {});
+          var guestname = "";
           showDialog(
               context: context,
               builder: (context) {
@@ -60,9 +61,7 @@ class _State extends State<Home> {
                   content: TextField(
                     onChanged: (value) {
                       setState(() {
-                        names.add("Joe Biden");
-                        times.add("Now");
-                        eCtrl.clear();
+                        guestname = value;
                       });
                     },
                     controller: eCtrl,
@@ -81,6 +80,9 @@ class _State extends State<Home> {
                       child: Text('OK'),
                       onPressed: () {
                         setState(() {
+                          names.add(guestname);
+                          times.add("Now");
+                          eCtrl.clear();
                           Navigator.pop(context);
                         });
                       },
