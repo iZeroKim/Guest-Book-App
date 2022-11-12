@@ -28,10 +28,14 @@ class _State extends State<Home> {
                           color: msgCount[index]>=10? Colors.blue[400]:
                           msgCount[index]>3? Colors.blue[100]: Colors.grey,
                           child: Center(
-                              child: Text('${names[index]} (${msgCount[index]})',
-                                style: TextStyle(fontSize: 18),
+                              // Text('${names[index]} (${msgCount[index]})',
+                              //   style: TextStyle(fontSize: 18),
+                              // ),
+                              child: CircleAvatar(
+                                backgroundImage: AssetImage("assets/react.png"),child: Text('BA'),
                               )
                           ),
+
                         );
                       }
                   )
