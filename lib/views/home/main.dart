@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import '../auth/login_page.dart';
+import '../auth/register_page.dart';
 import 'home.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Guest Book',
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: RegisterPage(),
       );
   }
 }
