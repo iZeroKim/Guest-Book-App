@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import  'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -9,9 +10,9 @@ class _State extends State<Home> {
   final TextEditingController eCtrl =  TextEditingController();
   final names = ["Samuel Kimani", "Allan Doe", "John Doe"];
   final times = [
-    "11/11/2022, 8:30 am",
-    "11/11/2022, 8:33 am",
-    "11/11/2022, 8:34 am"
+    "Nov, 12, 2022 08:27PM",
+    "Nov, 12, 2022 08:35PM",
+    "Nov, 12, 2022 08:52PM"
   ];
   final icons = [Icons.delete];
 
@@ -80,8 +81,13 @@ class _State extends State<Home> {
                       child: Text('OK'),
                       onPressed: () {
                         setState(() {
+                          var datetime = DateTime.now();
+                          String date = DateFormat("MMM, dd, yyyy").format(datetime);
+                          String time = DateFormat("hh:mm a").format(datetime);
+
+
                           names.add(guestname);
-                          times.add("Now");
+                          times.add("${date} ${time}");
                           eCtrl.clear();
                           Navigator.pop(context);
                         });

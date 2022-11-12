@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Guest Book',
       debugShowCheckedModeBanner: false,
-      home: RegisterPage(),
+      home: LoginPage(),
       );
   }
 }
