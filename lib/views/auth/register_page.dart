@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'login_page.dart';
+import '../home/home.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -33,7 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
             Image.asset(
               'images/icon.png',
@@ -42,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
               fit: BoxFit.cover,
             ),
             const SizedBox(
-              height: 50,
+              height: 20,
             ),
             //Welcome text
             Text("Hello!",
@@ -57,7 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 style: TextStyle(fontSize: 18.0)),
             //email input field
             const SizedBox(
-              height: 50,
+              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -143,19 +144,35 @@ class _RegisterPageState extends State<RegisterPage> {
                       color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Center(
-                    child: Text(
+                  child: Center(
+                    child:TextButton(
+                      child: Text(
                       "Sign Up",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 14),
                     ),
+                      onPressed: () {
+                          setState(() {
+                            _nametext.text.isEmpty ? _validatename = true : _validatename = false;
+                            _emailtext.text.isEmpty ? _validateemail = true : _validateemail = false;
+                            _passwordtext.text.isEmpty ? _validatepassword = true : _validatepassword = false;
+                          });
+                          if(!_validatename && !_validateemail && !_validatepassword){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
+                          }
+
+
+                      },
+
+                    ),
+
                   ),
                 )),
             //register link
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

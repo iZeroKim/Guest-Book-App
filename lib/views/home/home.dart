@@ -14,6 +14,7 @@ class _State extends State<Home> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Guest List'),
+            automaticallyImplyLeading: false,
         ),
         body: Column(
             children: <Widget>[
