@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'register_page.dart';
+import '../home/home.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -10,6 +11,18 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _emailtext = TextEditingController();
+  final _passwordtext = TextEditingController();
+
+  bool _validateemail = false;
+  bool _validatepassword= false;
+
+  @override
+  void dispose() {
+    _emailtext.dispose();
+    _passwordtext.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,12 +66,15 @@ class _LoginPageState extends State<LoginPage> {
                     border: Border.all(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.only(left: 20.0),
                     child: TextField(
+                      controller: _emailtext,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: "Email",
+                        labelText: "Email",
+                        errorText: _validateemail ? 'Email can\'t be empty' : null,
                       ),
                     ),
                   )),
@@ -75,13 +91,16 @@ class _LoginPageState extends State<LoginPage> {
                     border: Border.all(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.only(left: 20.0),
                     child: TextField(
+                      controller: _passwordtext,
                       obscureText: true,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: "Password",
+                        labelText: "Password",
+                        errorText: _validatepassword ? 'Password can\'t be empty' : null,
                       ),
                     ),
                   )),
@@ -91,21 +110,35 @@ class _LoginPageState extends State<LoginPage> {
             ),
             //sign in button
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Container(
-                  padding: const EdgeInsets.all(25.0),
+                  padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
                       color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Center(
+                  child: Center(
+                    child:TextButton(
                     child: Text(
-                      "Sign In",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14),
-                    ),
+                    "Sign In",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _emailtext.text.isEmpty ? _validateemail = true : _validateemail = false;
+                      _passwordtext.text.isEmpty ? _validatepassword = true : _validatepassword = false;
+                    });
+                    if(!_validateemail && !_validatepassword){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
+                    }
+
+
+                  },
+
+                ),
                   ),
                 )),
             //register link

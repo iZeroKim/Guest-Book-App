@@ -12,7 +12,10 @@ class _State extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.grey[300],
+        resizeToAvoidBottomInset : true,
         appBar: AppBar(
+          backgroundColor: Colors.deepPurple,
           title: Text('Guest List'),
             automaticallyImplyLeading: false,
         ),
