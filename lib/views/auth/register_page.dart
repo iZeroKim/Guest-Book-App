@@ -10,6 +10,20 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _nametext = TextEditingController();
+  final _emailtext = TextEditingController();
+  final _passwordtext = TextEditingController();
+  bool _validatename = false;
+  bool _validateemail = false;
+  bool _validatepassword= false;
+
+  @override
+  void dispose() {
+    _nametext.dispose();
+    _emailtext.dispose();
+    _passwordtext.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,12 +67,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     border: Border.all(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.only(left: 20.0),
                     child: TextField(
+                      controller: _nametext,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: "Email",
+                        hintText: "Name",
+                        labelText: "Name",
+                        errorText: _validatename ? 'Name can\'t be empty' : null,
                       ),
                     ),
                   )),
@@ -74,12 +91,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     border: Border.all(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.only(left: 20.0),
                     child: TextField(
+                      controller: _emailtext,
                       decoration: InputDecoration(
                         border: InputBorder.none,
-                        hintText: "Name",
+                        hintText: "Email",
+                        labelText: "Email",
+                        errorText: _validateemail ? 'Email can\'t be empty' : null,
                       ),
                     ),
                   )),
@@ -87,6 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
             const SizedBox(
               height: 10,
             ),
+
             //password input field
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -96,13 +117,16 @@ class _RegisterPageState extends State<RegisterPage> {
                     border: Border.all(color: Colors.white),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.only(left: 20.0),
                     child: TextField(
                       obscureText: true,
+                      controller: _passwordtext,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: "Password",
+                        labelText: "Password",
+                        errorText: _validatepassword ? 'Password can\'t be empty' : null,
                       ),
                     ),
                   )),
