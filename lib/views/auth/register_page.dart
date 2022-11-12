@@ -120,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   child: const Center(
                     child: Text(
-                      "Sign In",
+                      "Sign Up",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -135,10 +135,10 @@ class _RegisterPageState extends State<RegisterPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
-                Text("Not a member?",
+                Text("Already have an account?",
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 Text(
-                  " Register now",
+                  " Login now",
                   style: TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.blue),
                 )
