@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'register_page.dart';
+
 import '../home/home.dart';
+import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordtext = TextEditingController();
 
   bool _validateemail = false;
-  bool _validatepassword= false;
+  bool _validatepassword = false;
 
   @override
   void dispose() {
@@ -23,11 +24,12 @@ class _LoginPageState extends State<LoginPage> {
     _passwordtext.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[300],
-        resizeToAvoidBottomInset : false,
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
             child: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -44,10 +46,11 @@ class _LoginPageState extends State<LoginPage> {
               height: 50,
             ),
             //Welcome text
-            Text("Hello Again!",
-                style: GoogleFonts.bebasNeue(
-                  fontSize: 54,
-                ),
+            Text(
+              "Hello Again!",
+              style: GoogleFonts.bebasNeue(
+                fontSize: 54,
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -74,7 +77,8 @@ class _LoginPageState extends State<LoginPage> {
                         border: InputBorder.none,
                         hintText: "Email",
                         labelText: "Email",
-                        errorText: _validateemail ? 'Email can\'t be empty' : null,
+                        errorText:
+                            _validateemail ? 'Email can\'t be empty' : null,
                       ),
                     ),
                   )),
@@ -100,7 +104,9 @@ class _LoginPageState extends State<LoginPage> {
                         border: InputBorder.none,
                         hintText: "Password",
                         labelText: "Password",
-                        errorText: _validatepassword ? 'Password can\'t be empty' : null,
+                        errorText: _validatepassword
+                            ? 'Password can\'t be empty'
+                            : null,
                       ),
                     ),
                   )),
@@ -114,31 +120,33 @@ class _LoginPageState extends State<LoginPage> {
                 child: Container(
                   padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      borderRadius: BorderRadius.circular(12),
+                    color: Colors.deepPurple,
+                    borderRadius: BorderRadius.circular(12),
                   ),
                   child: Center(
-                    child:TextButton(
-                    child: Text(
-                    "Sign In",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _emailtext.text.isEmpty ? _validateemail = true : _validateemail = false;
-                      _passwordtext.text.isEmpty ? _validatepassword = true : _validatepassword = false;
-                    });
-                    if(!_validateemail && !_validatepassword){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
-                    }
-
-
-                  },
-
-                ),
+                    child: TextButton(
+                      child: Text(
+                        "Sign In",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _emailtext.text.isEmpty
+                              ? _validateemail = true
+                              : _validateemail = false;
+                          _passwordtext.text.isEmpty
+                              ? _validatepassword = true
+                              : _validatepassword = false;
+                        });
+                        if (!_validateemail && !_validatepassword) {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => Home()));
+                        }
+                      },
+                    ),
                   ),
                 )),
             //register link
@@ -151,15 +159,15 @@ class _LoginPageState extends State<LoginPage> {
                 Text("Not a member?",
                     style: TextStyle(fontWeight: FontWeight.bold)),
                 TextButton(
-                  child:Text(
+                  child: Text(
                     " Register now",
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.blue),
                   ),
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterPage()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => RegisterPage()));
                   },
-
                 ),
               ],
             )

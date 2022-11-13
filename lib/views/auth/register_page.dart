@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'login_page.dart';
+
 import '../home/home.dart';
+import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -145,29 +146,34 @@ class _RegisterPageState extends State<RegisterPage> {
                       borderRadius: BorderRadius.circular(12),
                   ),
                   child: Center(
-                    child:TextButton(
+                    child: TextButton(
                       child: Text(
-                      "Sign Up",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14),
-                    ),
+                        "Sign Up",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14),
+                      ),
                       onPressed: () {
-                          setState(() {
-                            _nametext.text.isEmpty ? _validatename = true : _validatename = false;
-                            _emailtext.text.isEmpty ? _validateemail = true : _validateemail = false;
-                            _passwordtext.text.isEmpty ? _validatepassword = true : _validatepassword = false;
-                          });
-                          if(!_validatename && !_validateemail && !_validatepassword){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
-                          }
-
-
+                        setState(() {
+                          _nametext.text.isEmpty
+                              ? _validatename = true
+                              : _validatename = false;
+                          _emailtext.text.isEmpty
+                              ? _validateemail = true
+                              : _validateemail = false;
+                          _passwordtext.text.isEmpty
+                              ? _validatepassword = true
+                              : _validatepassword = false;
+                        });
+                        if (!_validatename &&
+                            !_validateemail &&
+                            !_validatepassword) {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => Home()));
+                        }
                       },
-
                     ),
-
                   ),
                 )),
             //register link

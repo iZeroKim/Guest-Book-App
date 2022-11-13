@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import  'package:intl/intl.dart';
+import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -7,7 +7,7 @@ class Home extends StatefulWidget {
 }
 
 class _State extends State<Home> {
-  final TextEditingController eCtrl =  TextEditingController();
+  final TextEditingController eCtrl = TextEditingController();
   final names = ["Samuel Kimani", "Allan Doe", "John Doe"];
   final times = [
     "Nov, 12, 2022 08:27PM",
@@ -19,39 +19,36 @@ class _State extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[300],
-        resizeToAvoidBottomInset : true,
-        appBar: AppBar(
-          backgroundColor: Colors.deepPurple,
-          title: Text('Guest List'),
-            automaticallyImplyLeading: false,
-        ),
-        body: Column(
-            children: <Widget>[
-
-              Expanded(
-                  child: ListView.builder(
-                      itemCount: names.length,
-                      itemBuilder: (context, index) {
-                        var name = names[index][0] + names[index][1];
-                        return Card(
-                            child: ListTile(
-                                title: Text(names[index]),
-                                subtitle: Text(times[index]),
-                                leading: CircleAvatar(
-                                backgroundImage: AssetImage("assets/react.png"),child: Text(name.toUpperCase()),backgroundColor: Colors.deepPurple,),
-                                trailing: Icon(icons[0])));
-                      })
-              ),
-
-            ]
-        ),
+      backgroundColor: Colors.grey[300],
+      resizeToAvoidBottomInset: true,
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurple,
+        title: Text('Guest List'),
+        automaticallyImplyLeading: false,
+      ),
+      body: Column(children: <Widget>[
+        Expanded(
+            child: ListView.builder(
+                itemCount: names.length,
+                itemBuilder: (context, index) {
+                  var name = names[index][0] + names[index][1];
+                  return Card(
+                      child: ListTile(
+                          title: Text(names[index]),
+                          subtitle: Text(times[index]),
+                          leading: CircleAvatar(
+                            backgroundImage: AssetImage("assets/react.png"),
+                            child: Text(name.toUpperCase()),
+                            backgroundColor: Colors.deepPurple,
+                          ),
+                          trailing: Icon(icons[0])));
+                })),
+      ]),
       floatingActionButton: FloatingActionButton.extended(
         label: Text("Add guest"),
         icon: Icon(Icons.add),
         backgroundColor: Colors.deepPurple,
         onPressed: () {
-
           setState(() {});
           var guestname = "";
           showDialog(
@@ -82,9 +79,9 @@ class _State extends State<Home> {
                       onPressed: () {
                         setState(() {
                           var datetime = DateTime.now();
-                          String date = DateFormat("MMM, dd, yyyy").format(datetime);
+                          String date =
+                              DateFormat("MMM, dd, yyyy").format(datetime);
                           String time = DateFormat("hh:mm a").format(datetime);
-
 
                           names.add(guestname);
                           times.add("${date} ${time}");
